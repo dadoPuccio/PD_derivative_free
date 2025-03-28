@@ -2,7 +2,7 @@
 
 Implementation of the Penalty-Decomposition Derivative-Free (```PDDF```) method introduced in 
 
-[Cecere F., Lapucci M., Pucci D. and Sciandrone M. - Penalty decomposition derivative free method for  the minimization of partially separable functions over a convex feasible set - arXiv pre-print (2025)]([https://arxiv.org/](https://arxiv.org/abs/2503.21631))
+[Cecere F., Lapucci M., Pucci D. and Sciandrone M. - Penalty decomposition derivative free method for  the minimization of partially separable functions over a convex feasible set - arXiv pre-print (2025)](https://arxiv.org/abs/2503.21631)
 
 ## Installation
 In order to use ```PDDF``` you will need a working [conda](https://docs.conda.io/projects/conda/en/latest/index.html) installation. We suggest the creation of a new conda environment with the latest version of ```Python```. The required dependencies ```numpy``` and ```dill``` can be installed through:
