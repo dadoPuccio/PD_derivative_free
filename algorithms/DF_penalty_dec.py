@@ -44,13 +44,13 @@ def DF_penalty_dec(f_list, x0, I, tau, max_tau, theta,
 
 
     # LOGS are not considered on time eval
-    col_names = ['k', 'f', 'time', 'norm_update', 'max_alpha', 'min_count', 'avg_count', 'tau']
+    col_names = ['k', 'f', 'time', 'norm_update', 'max_alpha', 'min_count', 'tot_evals', 'tau']
     init_csv(os.path.join(out_dir), 'log.csv', col_names)
 
-    print('k      f      time    norm_update  max_alpha  min_count  avg_count tau')
-    print(f"{k}  {f_tot_for_logs(x):.6f}  {full_time:.6f}       0  {np.max(alpha):.6f}  {np.min(count)}  {np.mean(count)}  {tau:.4f}")
+    print('k      f      time    norm_update  max_alpha  min_count  tot_evals  tau')
+    print(f"{k}  {f_tot_for_logs(x):.6f}  {full_time:.6f}       0  {np.max(alpha):.6f}  {np.min(count)}  {np.sum(count)}  {tau:.4f}")
     
-    out_row = [k, f_tot_for_logs(x), full_time, 0, np.max(alpha), np.min(count), np.mean(count), tau]
+    out_row = [k, f_tot_for_logs(x), full_time, 0, np.max(alpha), np.min(count), np.sum(count), tau]
     append_row_csv(os.path.join(out_dir), 'log.csv', out_row)
 
 
@@ -103,11 +103,12 @@ def DF_penalty_dec(f_list, x0, I, tau, max_tau, theta,
             v[:, i] = current_v
         
         x = exact_minimum(I, v, n)
-        
-        tau = min(theta * tau, max_tau)
 
         norm_update = np.linalg.norm(x - prev_x)
         max_alpha = np.max(alpha)
+
+        if norm_update < (toll * 100) and max_alpha < (toll * 100) / max(1, tau):
+            tau = min(theta * tau, max_tau)
 
         termination = False
 
@@ -120,9 +121,9 @@ def DF_penalty_dec(f_list, x0, I, tau, max_tau, theta,
         full_time += e_time - s_time
         
         if k % 10 == 0 or termination:
-            print(f"{k}  {f_tot_for_logs(x):.6f}  {full_time:.6f}  {norm_update:.6f}  {max_alpha:.6f}  {np.min(count)}  {np.mean(count)}  {tau:.4f}")
-        
-        out_row = [k, f_tot_for_logs(x), full_time, norm_update, max_alpha, np.min(count), np.mean(count), tau] 
+            print(f"{k}  {f_tot_for_logs(x):.6f}  {full_time:.6f}  {norm_update:.6f}  {max_alpha:.6f}  {np.min(count)}  {np.sum(count):.2e}  {tau:.4f}")
+            
+        out_row = [k, f_tot_for_logs(x), full_time, norm_update, max_alpha, np.min(count), np.sum(count), tau] 
         append_row_csv(os.path.join(out_dir), 'log.csv', out_row)
 
         if termination:

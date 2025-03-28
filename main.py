@@ -88,7 +88,7 @@ if __name__ == "__main__":
     parser.add_argument('-df_pd_tau', default=None, type=float) 
     parser.add_argument('-df_pd_max_tau', default=None, type=float) 
 
-    parser.add_argument('-df_pd_theta', default=1.05, type=float)
+    parser.add_argument('-df_pd_theta', default=1.5, type=float)
 
     args = parser.parse_args()
 
