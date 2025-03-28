@@ -2,10 +2,10 @@
 
 Implementation of the Penalty-Decomposition Derivative-Free (```PDDF```) method introduced in 
 
-[Cecere F., Lapucci M., Pucci D. and Sciandrone M. - Penalty decomposition derivative free method for  the minimization of partially separable functions over a convex feasible set - arXiv pre-print (2025)](https://arxiv.org/)
+[Cecere F., Lapucci M., Pucci D. and Sciandrone M. - Penalty decomposition derivative free method for  the minimization of partially separable functions over a convex feasible set - arXiv pre-print (2025)]([https://arxiv.org/](https://arxiv.org/abs/2503.21631))
 
 ## Installation
-In order to use ```PDDF``` you will need a working [Anaconda](https://www.anaconda.com/) installation. We suggest the creation of a new conda environment with the latest version of ```Python```. The required dependencies ```numpy``` and ```dill``` can be installed through:
+In order to use ```PDDF``` you will need a working [conda](https://docs.conda.io/projects/conda/en/latest/index.html) installation. We suggest the creation of a new conda environment with the latest version of ```Python```. The required dependencies ```numpy``` and ```dill``` can be installed through:
 ```
 pip install numpy
 pip install dill
@@ -24,7 +24,13 @@ In main.py, the complete list of algorithm parameters can be found and adjusted 
 In case you employed our code for research purposes, please cite:
 
 ```
-@misc{
-  TODO
+@misc{cecere2025penaltydecompositionderivativefree,
+      title={Penalty decomposition derivative free method for the minimization of partially separable functions over a convex feasible set}, 
+      author={Francesco Cecere and Matteo Lapucci and Davide Pucci and Marco Sciandrone},
+      year={2025},
+      eprint={2503.21631},
+      archivePrefix={arXiv},
+      primaryClass={math.OC},
+      url={https://arxiv.org/abs/2503.21631}, 
 }
 ```
