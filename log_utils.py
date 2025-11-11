@@ -2,7 +2,6 @@ import json
 import os
 from datetime import datetime
 import csv
-import copy
 
 def init_logs_folder(savedir_base):
     exp_date = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
@@ -11,6 +10,25 @@ def init_logs_folder(savedir_base):
     os.makedirs(savedir, exist_ok=True)
 
     return savedir
+
+
+def init_exp_log_folder(savedir, exp_dict, exp_fields_logs):
+
+    exp_str = ""
+    for exp_field in exp_fields_logs:
+        if "opt." in exp_field:
+            opt_field = exp_field.split(".")[1]
+            if opt_field in exp_dict['opt'].keys():
+                exp_str += str(exp_dict['opt'][opt_field]) + "_"
+        else:
+            exp_str += str(exp_dict[exp_field]) + "_"
+
+    exp_str = exp_str[:-1]
+    
+    expdir = os.path.join(savedir, exp_str)
+    os.makedirs(expdir, exist_ok=True)
+
+    return expdir
 
 
 def init_csv(savedir, csv_name, col_names):
@@ -31,12 +49,17 @@ def append_row_csv(savedir, csv_name, row):
         writer.writerow(row)
 
 
-def save_json(fname, data, makedirs=True):
-    """
-    # From Haven utils
-    """
+def append_rows_csv(savedir, csv_name, rows):
+    csv_path = os.path.join(savedir, csv_name)
 
-    # turn fname to string in case it is a Path object
+    with open(csv_path, 'a', newline='') as csv_file:
+        writer = csv.writer(csv_file)
+
+        writer.writerows(rows)
+
+
+def save_json(fname, data, makedirs=True):
+   
     fname = str(fname)
     dirname = os.path.dirname(fname)
     if makedirs and dirname != "":
