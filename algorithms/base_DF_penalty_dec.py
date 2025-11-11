@@ -1,5 +1,4 @@
 import numpy as np
-from scipy.optimize import minimize
 import os
 import time
 from log_utils import save_json, init_csv, append_row_csv

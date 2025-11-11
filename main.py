@@ -151,8 +151,8 @@ if __name__ == "__main__":
     
     parser.add_argument('-pause', default=0., type=float)
     parser.add_argument('-toll', default=1e-4, type=float)
-    parser.add_argument('-maxit', default=1e9)
-    parser.add_argument('-max_eval_group_k', default=1000, type=int)
+    parser.add_argument('-maxit', default=1e9, type=int)
+    parser.add_argument('-mg', '--max_eval_group_k', default=1000, type=int)
     parser.add_argument('-tl', '--time_limit', default=600, type=int)
 
     parser.add_argument('-df_pd_tau', default=1., type=float)
