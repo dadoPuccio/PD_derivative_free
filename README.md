@@ -6,7 +6,7 @@ Implementation of the Penalty-Decomposition Derivative-Free (`PDDF`) method intr
 
 
 ## Installation
-In order to use `PDDF` you will need a working [conda](https://docs.conda.io/projects/conda/en/latest/index.html) installation. We suggest the creation of a new conda environment with the latest version of `Python`. The required dependencies `numpy` and `PyNomadBBO` can be installed through:
+In order to use `PDDF` you will need a working [conda](https://docs.conda.io/projects/conda/en/latest/index.html) installation. We suggest the creation of a new conda environment with `Python 3.13`. The required dependencies `numpy` and `PyNomadBBO` can be installed through:
 ```
 pip install numpy
 pip install PyNomadBBO
